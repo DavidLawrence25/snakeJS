@@ -7,24 +7,28 @@
     <script type="text/javascript">
       document.addEventListener('keydown', logKey);
       function logKey(e) {
-      if (`${e.code}` == "ArrowRight") {
-        inputQueue.push(1)
-      }
-      if (`${e.code}` == "ArrowLeft") {
-        inputQueue.push(3)
-      }
-      if (`${e.code}` == "ArrowDown") {
-        inputQueue.push(2)
-      }
-      if (`${e.code}` == "ArrowUp") {
-        inputQueue.push(0)
-      }
+        if (`${e.code}` == "Space" && snake.dead == true) {
+          document.location.reload();
+        }
+        if (`${e.code}` == "ArrowRight" || `${e.code}` == "KeyD") {
+          inputQueue.push([1,0])
+        }
+        if (`${e.code}` == "ArrowLeft" || `${e.code}` == "KeyA") {
+          inputQueue.push([-1,0])
+        }
+        if (`${e.code}` == "ArrowDown" || `${e.code}` == "KeyS") {
+          inputQueue.push([0,1])
+        }
+        if (`${e.code}` == "ArrowUp" || `${e.code}` == "KeyW") {
+          inputQueue.push([0,-1])
+        }
     }
     </script>
   </head>
   <body>
     <div id="score">~ 0 ~</div>
     <p id="demo"></p>
-    <script type="text/javascript" src="test.js"></script>
+    <h3 id="restart"></h3>
+    <script type="text/javascript" src="testNoComments.js"></script>
   </body>
 </html>

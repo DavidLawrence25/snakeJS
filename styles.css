@@ -1,13 +1,11 @@
+* {
+  margin: 0px;
+}
+
 body {
   background-color: rgb(20,20,20);
   text-align: center;
-  font-size: 48px;
-  margin: 0px;
   padding: 0px;
-}
-
-p {
-  margin: 0px;
 }
 
 div {
@@ -15,4 +13,11 @@ div {
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   font-size: 64px;
+}
+
+h3 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: white;
+  padding-top: 10px;
 }
