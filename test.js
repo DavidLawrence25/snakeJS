@@ -23,22 +23,21 @@ let applePos = [size-3,Math.floor(size/2)]
 function generateBoard() {
   // empties the live version of the board
   items = [];
+  // creates template row array
+  let rowArr = [];
+  for (let i = 0; i < size; i++) {rowArr[i] = "⬛"}
   // creates the board
-  for (var i = 0; i < size; i++) {
-    // adds a new row to the board with a single item
-    items.push(["⬛"])
-    // adds the rest of the items to the row
-    for (var n = 1; n < size; n++) {
-      items[i][n] = "⬛";
-    }
+  for (let i = 0; i < size; i++) {
+    // adds a new row to the board via template row
+    items[i] = rowArr;
   }
 }
 function updateBoard() {
   // creates a new string called output
   let output = "";
   // adds to the string either the item in the board or a a line break between rows
-  for (var n = 0; n < items.length; n++) {
-    for (var i = 0; i < items[n].length; i++) {output += items[n][i]}
+  for (let n = 0; n < items.length; n++) {
+    for (let i = 0; i < items[n].length; i++) {output += items[n][i]}
     output += "<br>"
   }
   // sets the html display to the string we created
@@ -46,25 +45,21 @@ function updateBoard() {
 }
 function drawSnake() {
   // loops through the snake's ordered pairs and sets the value at the corresponding spot on the board to a snake block
-  for (var i = 0; i < (snake.pos.length); i++) {
-    items[snake.pos[i][1]][snake.pos[i][0]] = "⬜";
-  }
+  for (let i = 0; i < (snake.pos.length); i++) {items[snake.pos[i][1]][snake.pos[i][0]] = "⬜"}
 }
 function updateSnakePos() {
   if (snake.dead == false) {
     // set the new head position to newPos
     snake.pos.push(newPos)
     // if the snake isn't eating, we want to get rid of the tail block
-    if (snake.eating == false) {
-      snake.pos = snake.pos.slice(1);
-    }
+    if (snake.eating == false) {snake.pos = snake.pos.slice(1)}
     // this makes sure we don't grow indefinitely after eating
     snake.eating = false;
   }
 }
 function generateApple() {
   // this loop runs until the apple does not exist inside the snake
-  for (var i = 0; items[applePos[1]][applePos[0]] == "⬜"; i++) {
+  for (let i = 0; items[applePos[1]][applePos[0]] == "⬜"; i++) {
     // if this is the first time this loop runs on this iteration of the function, a point is rewarded to the player
     if (i == 0) {snake.len++; snake.eating = true; document.getElementById("score").innerHTML = "~ " + (snake.len - 3) + " ~";}
     // makes random x and y positions for the apple
